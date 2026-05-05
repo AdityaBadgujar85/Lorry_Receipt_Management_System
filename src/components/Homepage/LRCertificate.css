@@ -1,0 +1,204 @@
+/* MODAL & WRAPPERS */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-box {
+  width: 100%;
+  max-height: 100vh;
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  position: relative;
+  overflow-y: auto; /* Added for scrollability if content is tall */
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: red;
+  color: white;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.lr-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* TEMPLATE CONTAINER */
+.lr-template-container {
+  position: relative;
+  width: 1000px;
+  border: 1px solid black;
+  border-radius: 1rem;
+  display: inline-block; /* Helps container match image height */
+}
+
+.lr-template-container img {
+  width: 100%;
+  display: block;
+  position: relative;
+  z-index: 1;
+  border-radius: 1rem;
+}
+
+/* INPUTS & TEXTAREAS */
+.lr-template-container input,
+.lr-template-container textarea {
+  position: absolute;
+  border: none;
+  background: transparent;
+  outline: none;
+  z-index: 2;
+  outline: 1px solid gray;
+  border-radius: 4px;
+  font-size: small;
+  padding: 2px;
+  padding-left: 8px;
+}
+
+/* POSITIONS (Increased Specificity to override conflicts) */
+.lr-template-container .e-way_bill_no { top: 3.3%; left: 18%; }
+.lr-template-container .e-way_bill_date { top: 7%; left: 14.5%; }
+.lr-template-container .lr_date { top: 21%; left: 84%; width: 10%; }
+.lr-template-container .lr-from { top: 16.5%; left: 61%; width: 16%; }
+.lr-template-container .lr-number { top: 16.5%; left: 85%; width: 12%; }
+.lr-template-container .lr-to { top: 21%; left: 61%; width: 16%; }
+.lr-template-container .lr-consignor { top: 32%; left: 16%; width: 31.5%; }
+.lr-template-container .lr-consignor_GST { top: 38.8%; left: 9.5%; width: 38%; }
+.lr-template-container .lr-consignee { top: 32%; left: 60%; width: 32%; }
+.lr-template-container .lr-consignee_GST { top: 38.8%; left: 54%; width: 38%; }
+.lr-template-container .lr-invoice { top: 79.3%; left: 11.5%; width: 33%; }
+.lr-template-container .lr-truck { top: 84%; left: 55.3%; width: 13%; }
+.lr-template-container .Shipment_Doc_no { top: 74%; left: 13.5%; width: 13%; }
+.lr-template-container .Shipment_cost { top: 74%; left: 34%; width: 10%; }
+.lr-template-container .Declare_value { top: 74%; left: 52%; width: 12%; }
+.lr-template-container .Actual_Weight { top: 49%; left: 49.3%; width: 7%; }
+.lr-template-container .Charged_Weight { top: 49%; left: 57.6%; width: 7%; }
+
+/* BUTTONS */
+.button-style {
+  position: absolute;
+  bottom: 18px;
+  left: 90%;
+  transform: translateX(-50%);
+  width: 120px;
+  padding: 8px 12px;
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 2;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.button-style:hover {
+  background: #1d4ed8;
+  transform: translateX(-50%) scale(1.05);
+}
+
+.button-style:active {
+  transform: translateX(-50%) scale(0.98);
+}
+
+/* ARTICLE SECTION */
+.lr-template-container .no-article { top: 90%; left: 6%; width: 8%; }
+.lr-template-container .lr-description { top: 90%; left: 15%; width: 36%; }
+
+.addArticle {
+  position: absolute;
+  top: 90%;
+  left: 52%;
+  z-index: 2;
+  background: #1d4ed8;
+  font-size: 12px;
+  padding: 6px 10px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.lr-template-container .article-container {
+  position: absolute;
+  top: 49%;
+  left: 4.5%;
+  width: 40%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* 1. Allow the row to handle tall content */
+.article-row {
+  display: flex;
+  align-items: flex-start; /* Changed from center so text starts at top */
+  gap: 15px;               /* Adjusted gap for better spacing */
+  font-size: 12px;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+/* 2. Force the description to wrap text */
+.lr-template-container .descripiton_css {
+  min-width: 70%;
+  max-width: 70%;          /* Lock the width so it doesn't push buttons out */
+  word-wrap: break-word;   /* Older browsers */
+  overflow-wrap: break-word; /* Modern browsers */
+  white-space: normal;     /* Allows text to wrap to next line */
+  line-height: 1.2;        /* Better readability for multi-line text */
+  text-align: left;
+}
+
+/* 3. Ensure the No. column stays consistent */
+.lr-template-container .articleNo_css {
+  min-width: 12%;
+  max-width: 12%;
+  text-align: center;
+  flex-shrink: 0;          /* Prevents the description from squishing this */
+}
+
+.article-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.edit-btn {
+  background: #f59e0b;
+  color: white;
+  border: none;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.delete-btn {
+  background: #ef4444;
+  color: white;
+  border: none;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  cursor: pointer;
+}

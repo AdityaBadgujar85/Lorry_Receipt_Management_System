@@ -1,0 +1,217 @@
+/* PAGE SETTINGS */
+@page {
+  size: A4 portrait;
+  margin: 0 !important;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #F8FAFC;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* WRAPPER */
+.p-bill-page-wrapper {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 20px auto;
+  background: white;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* TEMPLATE IMAGE */
+.p-bill-template-container {
+  position: relative;
+  width: 210mm;
+  height: 297mm;
+  overflow: hidden;
+}
+
+.p-bill-template-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+/* HEADER - BILL ID & DATE */
+.p-bill-id, .p-bill-date {
+  position: absolute;
+  right: 20mm;
+  z-index: 10;
+  font-size: 12px;
+  font-weight: 700;
+  color: #0E334D;
+  letter-spacing: -0.02em;
+}
+
+.p-bill-date { top: 62.5mm; }
+.p-bill-id { top: 68.5mm; }
+
+.bill-no-design,.date-no-design{
+  color: #64748B;
+}
+
+/* TO DETAILS */
+.p-bill-toDetails {
+  position: absolute;
+  top: 80mm;
+  left: 18mm;
+  font-size: 12px;
+  z-index: 10;
+  line-height: 1.6;
+}
+
+.p-bill-toDetails h4 {
+  margin: 0 0 4px 0;
+  font-size: 10px;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 700;
+}
+
+.p-bill-toDetails p {
+  margin: 0;
+  font-weight: 700;
+  color: #0E334D;
+}
+
+/* TABLE STYLING */
+.p-bill-table-container {
+  position: absolute;
+  top: 112mm; 
+  left: 10mm;
+  right: 10mm;
+  z-index: 10;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.p-bill-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 10px;
+  background: white;
+}
+
+.p-bill-table th {
+  background-color: #0E334D !important;
+  color: white !important;
+  padding: 12px 6px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  text-align: center;
+  border: none;
+}
+
+.p-bill-table td {
+  padding: 10px 6px;
+  text-align: center;
+  color: #1E293B;
+  border-bottom: 1px solid #F1F5F9;
+  vertical-align: middle;
+}
+
+.p-bill-row:nth-child(even) {
+  background-color: #ffffff !important;
+}
+
+.p-bill-row:hover {
+  background-color: #EFF6FF !important;
+}
+
+/* Spacer Row styling */
+.p-bill-spacer-row td {
+  background-color: #f5f5f5 !important;
+  height: 6px;
+  border-bottom: none !important;
+}
+/* Column Alignment */
+.p-bill-table td:nth-child(7),
+.p-bill-table td:nth-child(8),
+.p-bill-table td:nth-child(9),
+.p-bill-table td:nth-child(10),
+.p-bill-table td:nth-child(11) {
+  text-align: right;
+  padding-right: 10px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+/* FOOTER TOTAL ROW */
+.p-bill-total-row td {
+  font-weight: 500;
+  font-size: 12px;
+  background-color: #ffffff !important;
+  color: #0E334D;
+  padding: 15px 10px;
+  border-top: 1.4px solid #838383;
+}
+
+/* SIGNATURE AREA */
+.p-bill-lastSign {
+  position: absolute;
+  bottom: 45mm;
+  right: 25mm;
+  z-index: 20;
+  text-align: right;
+}
+
+.p-bill-lastSign p:first-child {
+  font-size: 12px;
+  margin-bottom: 50px;
+  font-weight: 500;
+}
+
+.p-bill-lastSign p:last-child {
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+/* BUTTONS */
+.p-bill-header-actions {
+  width: 210mm;
+  margin: 15px auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.p-bill-btn-all {
+  background-color: #0E334D;
+  color: white;
+  padding: 10px 24px;
+  border: none;
+  font-weight: 700;
+  font-size: 14px;
+  display: flex;
+  gap: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+  width: 100%;
+  text-align: center !important;
+  align-items: center !important;
+  justify-content: center;
+}
+
+.p-bill-btn-all:hover {
+  background-color: #1a4a6d;
+}
+
+@media print {
+  body { background: none; }
+  .p-bill-page-wrapper { margin: 0; box-shadow: none; width: 210mm; height: 297mm; }
+  .p-bill-no-print { display: none !important; }
+}

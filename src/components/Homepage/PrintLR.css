@@ -1,0 +1,187 @@
+/* --- SCREEN VIEW --- */
+.print-page-wrapper {
+  background: #f0f0f0;
+  min-height: 100vh;
+}
+
+.header-actions {
+  padding: 20px;
+  max-width: 400px;
+}
+
+.print-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.print-box {
+  background: white;
+  position: relative;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 14px;
+  overflow: hidden;
+  padding: 10px;
+}
+
+.box-actions {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.print-template-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 250 / 176;
+}
+
+.print-template-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border: 0.5px solid grey;
+  border-radius: 12px;
+}
+
+/* Data Overlay Spans */
+.print-template-container span {
+  position: absolute;
+  z-index: 2;
+  font-size: 0.6vw;
+  font-weight: 500;
+  color: #000;
+}
+
+/* [Keeping all your original positions exactly as provided] */
+/* .p-e-way_bill_no { top: 4.3%; left: 18%; width: 28%; } */
+.p-e-way_bill_no { 
+  top: 2.2%; 
+  left: 18%; 
+  width: 30%; 
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;   /* 🔥 pushes content to bottom */
+
+  height: 4.5%;                /* MUST be fixed height */
+  overflow: hidden;
+
+  line-height: 1;
+  white-space: normal;
+
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+.p-e-way_bill_date { top: 7%; left: 14.5%; }
+.p-lr_no { top: 16.8%; left: 82.5%; width: 8%; }
+.p-lr_date { top: 21.4%; left: 82.5%; width: 8%; }
+.p-lr-from { top: 16.5%; left: 60%; width: 15%; }
+.p-lr-to { top: 21.5%; left: 60%; width: 15%; }
+.p-lr-consignor { top: 32%; left: 17.5%; width: 30%; line-height: 1.2; }
+.p-lr-consignor_GST { top: 38.8%; left: 11.8%; width: 30%; }
+.p-lr-consignee { top: 32%; left: 59.8%; width: 30%; line-height: 1.2; }
+.p-lr-consignee_GST { top: 38.8%; left: 54%; width: 30%; }
+.p-lr-invoice { top: 79.5%; left: 13.5%; width: 31.5%; }
+.p-lr-truck { top: 84%; left: 55.5%; width: 12.5%; }
+.p-Shipment_Doc_no { top: 74.5%; left: 15.5%; width: 12.5%; }
+.p-Shipment_cost { top: 74.5%; left: 35%; width: 9%; }
+.p-Declare_value { top: 74.5%; left: 51.5%; width: 12%; }
+.p-Actual_Weight { top: 49%; left: 49.2%; width: 7%; text-align: center; }
+.p-Charged_Weight { top: 49%; left: 57%; width: 7%; text-align: center; }
+
+.p-article-container {
+  position: absolute;
+  top: 49%;
+  left: 6.8%;
+  width: 53%;
+  display: flex;
+  flex-direction: column;
+}
+
+.p-article-row {
+  display: flex;
+  font-size: 0.6vw;
+  gap: 4%;
+  font-weight: 500;
+}
+
+.p-article-no { width: 8.5%; text-align: center; word-break: break-word; }
+.p-article-desc { width: 65%; word-break: break-word; }
+
+.btn-single{
+  background-color: #0E334D;
+  font-size: 14px;
+  padding: 8px 24px;
+  color: white;
+  border-radius: 14px;
+}
+
+.btn-all{
+  background-color: #0E334D;
+  font-size: 14px;
+  padding: 8px 24px;
+  color: white;
+  border-radius: 14px;
+  width: 100%;
+}
+
+/* --- PRINT LOGIC --- */
+@media print {
+  @page {
+    size: landscape;
+    margin: 0; /* Forces 0 margin on the paper */
+  }
+
+  body, html {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-container {
+    display: block !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  .print-box {
+    display: block !important;
+    width: 100vw !important; /* Fill full width of paper */
+    height: 100vh !important; /* Fill full height of paper */
+    page-break-after: always !important;
+    break-after: page !important;
+    page-break-inside: avoid !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  /* Ensure the template scales to the printable area */
+  .print-template-container {
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .hide-this {
+    display: none !important;
+  }
+
+  /* Fixed font sizes for physical print */
+  .print-template-container span {
+    font-size: 9pt !important;
+  }
+
+  .p-article-row {
+    font-size: 10pt !important;
+  }
+}
