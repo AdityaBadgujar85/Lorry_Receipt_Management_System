@@ -158,7 +158,3 @@ POST    /api/user/signup
 This project is intended for learning and practical implementation purposes. It can be extended further based on business requirements.
 
 ---
-
-## License
-
-Open for modification and personal use.
